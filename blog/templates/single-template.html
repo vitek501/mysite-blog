@@ -1,19 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <main class="container">
-        <div class="row">
-            <div class="col-md-3">
-                {% for post in posts %}
-                    <div>
-                        <div class="summary-title"><a href="/post/{{ post.slug }}">{{ post.title }}</a></div>
-                        <div class="summary">{{ post.summary }}</div>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="col-md-9">
-                {% block entry %}{% endblock %}
+    <div class="album">
+        <div class="container">
+            <div class="album__row">
+                <div class="album__content">
+                    {% block entry %}{% endblock %}
+                </div>
+                <aside class="album__sidebar">
+                    {% for post in posts %}
+                        <div>
+                            <div class="album__body"><a href="/post/{{ post.slug }}"><h4 class="album__title">{{ post.title }}</h4></a></div>
+                            <div class="album__text">{{ post.summary }}</div>
+                        </div>
+                    {% endfor %}
+                </aside>
             </div>
         </div>
-    </main>
+    </div>
 {% endblock %}

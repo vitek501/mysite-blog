@@ -1,26 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="card mb-3">
-        <img src="media/placeholder.jpg" class="img-fluid" alt="Мой блог" style="height: 400px;">
-    </div>
-    <div class="container">
-        <div class="col-md-12">
-            <h1 style="text-align: center">Recent Posts</h1>
-        </div>
-        <div class="card-group">
-            {% for post in posts %}
-                <div class="card">
-                    <img class="img-thumbnail" src="{{ post.image.url }}">
-                    <div class="card-body">
-                        <p class="card-text"></p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted"><a href="/post/{{ post.slug }}">{{ post.title }}</a></small>
-                    </div>
+    <div class="album">
+        <div class="container">
+            <div class="album__row">
+                <div class="album__content">
+                    {% for post in posts %}
+                    <article class="album__blog">
+                        <header class="album__header">
+                            <a href="/post/{{ post.slug }}"><h4 class="album__title">{{ post.title }}</h4></a>
+                        </header>
+                        <a href="/post/{{ post.slug }}"><img class="album__img" src="{{ post.image.url }}"></a>
+                        <div class="album__body">
+                            <p class="album__text">{{ post.summary }}</p>
+                        </div>
+                    </article>
+                    {% endfor %}
                 </div>
-            {% endfor %}
+                <div class="album__column">
+                    <aside class="album__sidebar">
+                        <div class="album__body">
+                            <h4 class="album__title">About</h4>
+                            <p class="album__text">Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Quis dolores, numquam, eveniet, repellendus libero aperiam illum optio amet vitae et corporis provident, sed. Atque, autem libero eos perspiciatis, velit quas!</p>
+                        </div>
+                    </aside>
+                    <aside class="album__sidebar sticky">
+                        <div class="album__body">
+                           <h4 class="album__title">Tags</h4>
+                            <a class="album__tag" href="#">internet</a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
-
